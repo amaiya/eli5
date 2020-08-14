@@ -2,6 +2,11 @@ from __future__ import absolute_import
 from typing import Any, Union, Callable, Dict, List, Optional, Set, Tuple
 
 from sklearn.feature_extraction.text import VectorizerMixin  # type: ignore
+# ktrain: added for ktrain to support sklearn>0.21.3
+try:
+    from sklearn.feature_extraction.text import _VectorizerMixin  # type: ignore
+except:
+    _VectorizerMixin = VectorizerMixin
 from sklearn.pipeline import FeatureUnion  # type: ignore
 
 from eli5.base import (
@@ -59,7 +64,9 @@ def _get_doc_weighted_spans(doc,
     if hasattr(vec, 'get_doc_weighted_spans'):
         return vec.get_doc_weighted_spans(doc, feature_weights, feature_fn)
 
-    if not isinstance(vec, VectorizerMixin):
+    # ktrain: changed to support sklearn>021.3
+    #if not isinstance(vec, VectorizerMixin):
+    if not isinstance(vec, (VectorizerMixin, _VectorizerMixin)):
         return None
 
     span_analyzer, preprocessed_doc = build_span_analyzer(doc, vec)

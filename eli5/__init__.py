@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
-__version__ = '0.10.1'
-KTRAIN = True
+__version__ = '0.10.1-ktrain-1'
+KTRAIN = True  # kept for backwards compatibility to older versions of ktrain
 
 from .formatters import (
     format_as_html,

@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 __version__ = '0.10.1'
 KTRAIN = True  # kept for backwards compatibility to older versions of ktrain
-KTRAIN_ELI5_TAG = 'ktrain_eli5-1.0'
+KTRAIN_ELI5_TAG = '0.10.1-1'
 
 from .formatters import (
     format_as_html,
